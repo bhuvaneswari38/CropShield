@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CropShield</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+     NAVBAR
+====================================================== -->
+
+    <header class="navbar">
+
+        <a href="{{ url_for('home') }}" class="logo">
+
+            <span class="logo-icon">
+                🌱
+            </span>
+
+            CropShield
+
+        </a>
+
+
+        <span class="tagline">
+            Extreme Heat Crop Protection
+        </span>
+
+
+        {% if page == "dashboard" %}
+
+        <form method="POST" action="{{ url_for('logout') }}">
+
+            <button class="logout-button" type="submit">
+                Logout
+            </button>
+
+        </form>
+
+        {% endif %}
+
+    </header>
+
+
+
+    <main class="container">
+
+
+        <!-- =====================================================
+     FLASH MESSAGES
+====================================================== -->
+
+        {% with messages = get_flashed_messages(
+        with_categories=true
+        ) %}
+
+        {% if messages %}
+
+        <div class="flash-container">
+
+            {% for category, message in messages %}
+
+            <div class="flash {{ category }}">
+
+                {{ message }}
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+        {% endwith %}
+
+
+
+        <!-- =====================================================
+     HOME PAGE
+====================================================== -->
+
+        {% if page == "home" %}
+
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="small-title">
+                    SMART FARMING • TIMELY ALERTS
+                </span>
+
+
+                <h1>
+
+                    Protect Your Crops.
+                    <span>
+                        Beat the Heat.
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    CropShield monitors local weather
+                    conditions and alerts farmers when
+                    temperatures reach their configured
+                    crop protection threshold.
+
+                </p>
+
+
+                <div class="hero-features">
+
+                    <span>✓ Multiple Farms</span>
+
+                    <span>✓ Weather Monitoring</span>
+
+                    <span>✓ SMS Ready</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <div class="sun"></div>
+
+                <div class="field field-one"></div>
+
+                <div class="field field-two"></div>
+
+                <div class="plant plant-one">
+                    🌱
+                </div>
+
+                <div class="plant plant-two">
+                    🌱
+                </div>
+
+                <div class="temperature-card">
+
+                    🌡️
+
+                    <div>
+
+                        <strong>
+                            Heat Watch
+                        </strong>
+
+                        <small>
+                            Crop protection active
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+     FARMING METHOD
+====================================================== -->
+
+        <section class="method-section">
+
+            <div class="section-heading">
+
+                <span class="small-title">
+                    GET STARTED
+                </span>
+
+                <h2>
+                    How do you grow?
+                </h2>
+
+                <p>
+                    Choose your farming method to get started.
+                    You can manage both methods using one account.
+                </p>
+
+            </div>
+
+
+
+            <div class="method-grid">
+
+
+                <button class="method-card" data-method="Greenhouse" type="button">
+
+                    <span class="method-icon">
+                        🏡
+                    </span>
+
+                    <h3>
+                        Greenhouse
+                    </h3>
+
+                    <p>
+                        For protected and covered cultivation.
+                    </p>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <button class="method-card" data-method="Open Field" type="button">
+
+                    <span class="method-icon">
+                        🌾
+                    </span>
+
+                    <h3>
+                        Open Field
+                    </h3>
+
+                    <p>
+                        For crops grown outdoors in fields.
+                    </p>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =====================================================
+     REGISTER / LOGIN
+====================================================== -->
+
+            <div class="auth-box" id="auth-box">
+
+
+                <div class="auth-tabs">
+
+                    <button class="auth-tab active" data-tab="register">
+                        Create Account
+                    </button>
+
+                    <button class="auth-tab" data-tab="login">
+                        Login
+                    </button>
+
+                </div>
+
+
+                <p class="selected-method">
+
+                    Selected method:
+
+                    <strong id="selected-method">
+                        Open Field
+                    </strong>
+
+                </p>
+
+
+                <!-- REGISTER -->
+
+                <form id="register-form" method="POST" action="{{ url_for('register') }}">
+
+                    <input type="hidden" name="method" id="register-method" value="Open Field">
+
+
+                    <label>
+
+                        Farmer Name
+
+                        <input type="text" name="name" placeholder="Enter your name" required>
+
+                    </label>
+
+
+                    <label>
+
+                        Mobile Number
+
+                        <input type="tel" name="phone" placeholder="+91 9876543210" required>
+
+                    </label>
+
+
+                    <label>
+
+                        Password
+
+                        <input type="password" name="password" placeholder="Minimum 8 characters" minlength="8"
+                            required>
+
+                    </label>
+
+
+                    <button class="primary-button" type="submit">
+
+                        Create Account →
+
+                    </button>
+
+                </form>
+
+
+
+                <!-- LOGIN -->
+
+                <form id="login-form" class="hidden" method="POST" action="{{ url_for('login') }}">
+
+                    <label>
+
+                        Mobile Number
+
+                        <input type="tel" name="phone" placeholder="+91 9876543210" required>
+
+                    </label>
+
+
+                    <label>
+
+                        Password
+
+                        <input type="password" name="password" placeholder="Enter your password" required>
+
+                    </label>
+
+
+                    <button class="primary-button" type="submit">
+
+                        Login →
+
+                    </button>
+
+                </form>
+
+
+                <p class="note">
+
+                    One account can manage greenhouse,
+                    open-field, or both types of farms.
+
+                </p>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+     FEATURES
+====================================================== -->
+
+        <section class="feature-section">
+
+
+            <div>
+
+                <span>
+                    01
+                </span>
+
+                <strong>
+                    Monitor
+                </strong>
+
+                <p>
+                    Check local weather conditions.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <span>
+                    02
+                </span>
+
+                <strong>
+                    Compare
+                </strong>
+
+                <p>
+                    Compare temperature with your threshold.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <span>
+                    03
+                </span>
+
+                <strong>
+                    Respond
+                </strong>
+
+                <p>
+                    Receive alerts and protect your crops.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        {% else %}
+
+
+        <!-- =====================================================
+     DASHBOARD
+====================================================== -->
+
+        <section class="dashboard-header">
+
+            <div>
+
+                <span class="small-title">
+                    FARMER DASHBOARD
+                </span>
+
+                <h1>
+
+                    Welcome,
+                    {{ user_name }}
+
+                    🌱
+
+                </h1>
+
+                <p>
+                    Monitor all your farms from one place.
+                </p>
+
+            </div>
+
+
+            <button class="primary-button" id="show-farm-form" type="button">
+
+                + Add Farm
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =====================================================
+     STATISTICS
+====================================================== -->
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <span class="stat-icon">
+                    🌱
+                </span>
+
+                <small>
+                    Total Farms
+                </small>
+
+                <strong>
+                    {{ farms|length }}
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-icon">
+                    🏡
+                </span>
+
+                <small>
+                    Greenhouse Farms
+                </small>
+
+                <strong>
+
+                    {{
+                    farms
+                    |selectattr(
+                    'method',
+                    'equalto',
+                    'Greenhouse'
+                    )
+                    |list
+                    |length
+                    }}
+
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-icon">
+                    🌾
+                </span>
+
+                <small>
+                    Open Field Farms
+                </small>
+
+                <strong>
+
+                    {{
+                    farms
+                    |selectattr(
+                    'method',
+                    'equalto',
+                    'Open Field'
+                    )
+                    |list
+                    |length
+                    }}
+
+                </strong>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+     ADD FARM FORM
+====================================================== -->
+
+        <section class="farm-form-box hidden" id="farm-form-box">
+
+            <div class="form-header">
+
+                <div>
+
+                    <span class="small-title">
+                        NEW FARM
+                    </span>
+
+                    <h2>
+                        Add Farm
+                    </h2>
+
+                </div>
+
+
+                <button id="close-form" class="close-button" type="button">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form method="POST" action="{{ url_for('add_farm') }}" class="farm-form">
+
+
+                <label>
+
+                    Farm Name
+
+                    <input type="text" name="farm_name" placeholder="Example: North Field" required>
+
+                </label>
+
+
+                <label>
+
+                    Farming Method
+
+                    <select name="method" required>
+
+                        <option>
+                            Greenhouse
+                        </option>
+
+                        <option>
+                            Open Field
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label>
+
+                    Location
+
+                    <input type="text" name="location" placeholder="Example: Bhimavaram" required>
+
+                </label>
+
+
+                <label>
+
+                    Crop
+
+                    <select name="crop" required>
+
+                        {% for crop in crops %}
+
+                        <option>
+                            {{ crop }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </label>
+
+
+                <label>
+
+                    Growth Stage
+
+                    <select name="growth_stage" required>
+
+                        {% for stage in stages %}
+
+                        <option>
+                            {{ stage }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </label>
+
+
+                <label>
+
+                    Heat Alert Threshold °C
+
+                    <input type="number" name="threshold" min="20" max="55" step="0.5" value="35" required>
+
+                </label>
+
+
+                <p class="form-note">
+
+                    The threshold should be selected using
+                    suitable crop and growth-stage guidance.
+                    35°C is only a demonstration value.
+
+                </p>
+
+
+                <button class="primary-button" type="submit">
+
+                    Save Farm
+
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+        <!-- =====================================================
+     EDIT FARM FORM
+====================================================== -->
+
+        <section class="farm-form-box hidden" id="edit-farm-form-box">
+
+            <div class="form-header">
+
+                <div>
+                    <span class="small-title">EDIT FARM</span>
+                    <h2>Update Farm Details</h2>
+                </div>
+
+                <button id="close-edit-form" class="close-button" type="button">×</button>
+
+            </div>
+
+            <form method="POST" id="edit-farm-form" class="farm-form">
+
+                <label>
+                    Farm Name
+                    <input type="text" name="farm_name" id="edit-farm-name" required>
+                </label>
+
+                <label>
+                    Farming Method
+                    <select name="method" id="edit-farm-method" required>
+                        <option>Greenhouse</option>
+                        <option>Open Field</option>
+                    </select>
+                </label>
+
+                <label>
+                    Location
+                    <input type="text" name="location" id="edit-farm-location" required>
+                </label>
+
+                <label>
+                    Crop
+                    <select name="crop" id="edit-farm-crop" required>
+                        {% for crop in crops %}
+                        <option>{{ crop }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+
+                <label>
+                    Growth Stage
+                    <select name="growth_stage" id="edit-farm-growth-stage" required>
+                        {% for stage in stages %}
+                        <option>{{ stage }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+
+                <label>
+                    Heat Alert Threshold °C
+                    <input type="number" name="threshold" id="edit-farm-threshold" min="20" max="55" step="0.5" required>
+                </label>
+
+                <button class="primary-button" type="submit">Save Changes</button>
+
+            </form>
+        </section>
+
+
+
+        <!-- =====================================================
+     FARM LIST
+====================================================== -->
+
+        <section class="content-section">
+
+            <div class="section-heading-left">
+
+                <div>
+
+                    <span class="small-title">
+                        MONITORING
+                    </span>
+
+                    <h2>
+                        Your Farms
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            {% if farms|length == 0 %}
+
+            <div class="empty-box">
+
+                <div class="empty-icon">
+                    🌿
+                </div>
+
+                <h3>
+                    No farms registered yet
+                </h3>
+
+                <p>
+                    Add your first greenhouse or open-field farm.
+                </p>
+
+                <button class="primary-button" id="empty-add-farm" type="button">
+                    Add First Farm
+                </button>
+
+            </div>
+
+
+            {% else %}
+
+
+            <div class="farm-grid">
+
+
+                {% for farm in farms %}
+
+
+                <article class="farm-card">
+
+
+                    <div class="farm-card-top">
+
+                        <span class="farm-icon">
+
+                            {% if farm.method == "Greenhouse" %}
+                            🏡
+                            {% else %}
+                            🌾
+                            {% endif %}
+
+                        </span>
+
+
+                        <span class="method-label">
+                            {{ farm.method }}
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        {{ farm.farm_name }}
+                    </h3>
+
+
+                    <p class="location">
+                        📍 {{ farm.location }}
+                    </p>
+
+
+                    <div class="farm-details">
+
+                        <div>
+                            <small>
+                                Crop
+                            </small>
+
+                            <strong>
+                                {{ farm.crop }}
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <small>
+                                Growth Stage
+                            </small>
+
+                            <strong>
+                                {{ farm.growth_stage }}
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <small>
+                                Alert Threshold
+                            </small>
+
+                            <strong>
+                                {{ "%.1f"|format(farm.threshold) }}°C
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="farm-actions">
+
+                        <button
+                            class="secondary-button edit-farm-button"
+                            type="button"
+                            data-farm-id="{{ farm.id }}"
+                            data-farm-name="{{ farm.farm_name|e }}"
+                            data-method="{{ farm.method|e }}"
+                            data-location="{{ farm.location|e }}"
+                            data-crop="{{ farm.crop|e }}"
+                            data-growth-stage="{{ farm.growth_stage|e }}"
+                            data-threshold="{{ farm.threshold }}"
+                        >
+                            Edit
+                        </button>
+
+                        <form method="POST" action="{{ url_for('delete_farm', farm_id=farm.id) }}" class="delete-farm-form">
+                            <button class="danger-button" type="submit">Delete</button>
+                        </form>
+
+                    </div>
+
+                    <button class="primary-button weather-button" data-farm-id="{{ farm.id }}" type="button">
+
+                        Check Weather →
+
+                    </button>
+
+
+                    <div class="weather-result hidden" id="weather-{{ farm.id }}">
+
+                    </div>
+
+
+                </article>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+            {% endif %}
+
+        </section>
+
+
+
+        <div class="auto-monitor-banner">
+            <strong>🔔 Automatic monitoring is active</strong>
+            <span>CropShield checks registered farms in the background every 15 minutes and sends a heat alert automatically when a threshold is exceeded.</span>
+        </div>
+
+
+        <!-- =====================================================
+     ALERT HISTORY
+====================================================== -->
+
+        <section class="content-section">
+
+            <div class="section-heading-left">
+
+                <span class="small-title">
+                    ALERTS
+                </span>
+
+                <h2>
+                    Recent Alert History
+                </h2>
+
+            </div>
+
+
+            {% if alerts|length == 0 %}
+
+            <div class="history-empty">
+
+                No alerts recorded yet.
+
+                Check the weather for a registered farm.
+
+            </div>
+
+            {% else %}
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Farm
+                            </th>
+
+                            <th>
+                                Crop
+                            </th>
+
+                            <th>
+                                Temperature
+                            </th>
+
+                            <th>
+                                Threshold
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for alert in alerts %}
+
+                        <tr>
+
+                            <td>
+                                {{ alert.farm_name }}
+                            </td>
+
+                            <td>
+                                {{ alert.crop }}
+                            </td>
+
+                            <td>
+                                {{ "%.1f"|format(alert.temperature) }}°C
+                            </td>
+
+                            <td>
+                                {{ "%.1f"|format(alert.threshold) }}°C
+                            </td>
+
+                            <td>
+                                {{ alert.created_at }}
+                            </td>
+
+                            <td>
+                                <span class="status">
+                                    Alert
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            {% endif %}
+
+        </section>
+
+
+        <footer>
+
+            CropShield • Extreme Heat Crop Protection
+
+        </footer>
+
+
+        {% endif %}
+
+
+    </main>
+
+</body>
+
+</html>

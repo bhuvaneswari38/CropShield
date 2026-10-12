@@ -1,0 +1,1512 @@
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f7faf7;
+
+    color: #20372b;
+
+}
+
+
+button,
+input,
+select {
+
+    font-family: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+
+    height: 72px;
+
+    background: white;
+
+    border-bottom:
+        1px solid #e4ebe5;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        0 6%;
+
+}
+
+
+.logo {
+
+    text-decoration: none;
+
+    color: #17623f;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.logo-icon {
+
+    width: 36px;
+
+    height: 36px;
+
+    border-radius: 10px;
+
+    background: #17623f;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.tagline {
+
+    color: #7a877f;
+
+    font-size: 13px;
+
+    flex: 1;
+
+}
+
+
+.logout-button {
+
+    border:
+        1px solid #dce5de;
+
+    background: white;
+
+    color: #17623f;
+
+    padding: 9px 16px;
+
+    border-radius: 9px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+
+    width: 88%;
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding:
+        35px 0 60px;
+
+}
+
+
+/* =========================================================
+   FLASH
+========================================================= */
+
+.flash-container {
+
+    margin-bottom: 20px;
+
+}
+
+
+.flash {
+
+    padding: 13px 16px;
+
+    border-radius: 9px;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+}
+
+
+.flash.success {
+
+    background: #e7f7ed;
+
+    color: #17623f;
+
+}
+
+
+.flash.error {
+
+    background: #fff0ec;
+
+    color: #a13c2b;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 380px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    background: #eaf5ed;
+
+}
+
+
+.hero-content {
+
+    padding:
+        60px 35px 50px 55px;
+
+}
+
+
+.small-title {
+
+    color: #26734d;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.hero h1 {
+
+    font-size: 52px;
+
+    line-height: 1.08;
+
+    margin:
+        18px 0;
+
+    letter-spacing: -2px;
+
+}
+
+
+.hero h1 span {
+
+    color: #17623f;
+
+}
+
+
+.hero p {
+
+    color: #687970;
+
+    max-width: 500px;
+
+    line-height: 1.7;
+
+}
+
+
+.hero-features {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin-top: 28px;
+
+    color: #17623f;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.hero-image {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(135deg,
+            #d9efdf,
+            #a9d3b9);
+
+}
+
+
+.sun {
+
+    position: absolute;
+
+    width: 90px;
+
+    height: 90px;
+
+    background: #f8ca72;
+
+    border-radius: 50%;
+
+    top: 45px;
+
+    right: 20%;
+
+}
+
+
+.field {
+
+    position: absolute;
+
+    width: 130%;
+
+    height: 180px;
+
+    border-radius: 50%;
+
+}
+
+
+.field-one {
+
+    background: #9bcaaa;
+
+    bottom: -100px;
+
+    left: -30%;
+
+    transform: rotate(-10deg);
+
+}
+
+
+.field-two {
+
+    background: #4a9870;
+
+    bottom: -130px;
+
+    right: -30%;
+
+    transform: rotate(10deg);
+
+}
+
+
+.plant {
+
+    position: absolute;
+
+    z-index: 5;
+
+    font-size: 65px;
+
+}
+
+
+.plant-one {
+
+    bottom: 25px;
+
+    left: 25%;
+
+}
+
+
+.plant-two {
+
+    bottom: 5px;
+
+    right: 22%;
+
+    font-size: 85px;
+
+}
+
+
+.temperature-card {
+
+    position: absolute;
+
+    top: 22px;
+
+    right: 22px;
+
+    background: white;
+
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    gap: 9px;
+
+    align-items: center;
+
+    box-shadow:
+        0 8px 25px #204e3714;
+
+}
+
+
+.temperature-card small {
+
+    display: block;
+
+    color: #7b887f;
+
+    margin-top: 3px;
+
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.method-section {
+
+    padding-top: 60px;
+
+}
+
+
+.section-heading {
+
+    text-align: center;
+
+}
+
+
+.section-heading h2 {
+
+    font-size: 32px;
+
+    margin:
+        10px 0;
+
+}
+
+
+.section-heading p {
+
+    color: #78867d;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   METHOD CARDS
+========================================================= */
+
+.method-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+
+    max-width: 780px;
+
+    margin:
+        30px auto;
+
+}
+
+
+.method-card {
+
+    position: relative;
+
+    text-align: left;
+
+    background: white;
+
+    border:
+        1px solid #e0e9e2;
+
+    border-radius: 17px;
+
+    padding: 25px;
+
+    transition: .2s;
+
+}
+
+
+.method-card:hover,
+.method-card.selected {
+
+    border-color: #6ba783;
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 30px #17623f12;
+
+}
+
+
+.method-icon {
+
+    font-size: 32px;
+
+}
+
+
+.method-card h3 {
+
+    margin:
+        13px 0 7px;
+
+    font-size: 19px;
+
+}
+
+
+.method-card p {
+
+    color: #78867d;
+
+    font-size: 13px;
+
+}
+
+
+.arrow {
+
+    position: absolute;
+
+    top: 22px;
+
+    right: 22px;
+
+    color: #17623f;
+
+    font-size: 22px;
+
+}
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+.auth-box {
+
+    max-width: 480px;
+
+    margin:
+        25px auto;
+
+    background: white;
+
+    border:
+        1px solid #e0e9e2;
+
+    padding: 27px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 12px 35px #204e370b;
+
+}
+
+
+.auth-tabs {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 4px;
+
+    padding: 4px;
+
+    background: #f0f4f1;
+
+    border-radius: 10px;
+
+}
+
+
+.auth-tab {
+
+    border: 0;
+
+    background: transparent;
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    color: #7c8981;
+
+    font-weight: 600;
+
+}
+
+
+.auth-tab.active {
+
+    background: white;
+
+    color: #17623f;
+
+}
+
+
+.selected-method {
+
+    font-size: 13px;
+
+    color: #77847c;
+
+}
+
+
+.selected-method strong {
+
+    color: #17623f;
+
+}
+
+
+.auth-box form {
+
+    display: grid;
+
+    gap: 15px;
+
+}
+
+
+.auth-box label,
+.farm-form label {
+
+    display: grid;
+
+    gap: 7px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #526159;
+
+}
+
+
+.auth-box input,
+.farm-form input,
+.farm-form select {
+
+    padding: 12px;
+
+    border:
+        1px solid #dce6df;
+
+    border-radius: 9px;
+
+    outline: none;
+
+}
+
+
+.auth-box input:focus,
+.farm-form input:focus,
+.farm-form select:focus {
+
+    border-color: #4d946d;
+
+}
+
+
+.primary-button {
+
+    border: 0;
+
+    background: #17623f;
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 9px;
+
+    font-weight: 700;
+
+    transition: .2s;
+
+}
+
+
+.primary-button:hover {
+
+    background: #114a30;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.note {
+
+    color: #8a958e;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   FEATURE SECTION
+========================================================= */
+
+.feature-section {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 30px;
+
+    border-top:
+        1px solid #e0e9e2;
+
+    padding-top: 25px;
+
+    margin-top: 35px;
+
+}
+
+
+.feature-section div {
+
+    display: grid;
+
+    grid-template-columns:
+        35px 1fr;
+
+}
+
+
+.feature-section span {
+
+    color: #17623f;
+
+    font-weight: 800;
+
+}
+
+
+.feature-section p {
+
+    grid-column: 2;
+
+    margin: 5px 0;
+
+    color: #7c8981;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+
+}
+
+
+.dashboard-header h1 {
+
+    font-size: 38px;
+
+    margin:
+        10px 0;
+
+}
+
+
+.dashboard-header p {
+
+    color: #78867d;
+
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.stat-card {
+
+    background: white;
+
+    border:
+        1px solid #e1e9e3;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+}
+
+
+.stat-icon {
+
+    font-size: 24px;
+
+}
+
+
+.stat-card small {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: #7c8981;
+
+}
+
+
+.stat-card strong {
+
+    display: block;
+
+    font-size: 28px;
+
+    margin-top: 6px;
+
+}
+
+
+/* =========================================================
+   FARM FORM
+========================================================= */
+
+.farm-form-box {
+
+    background: white;
+
+    border:
+        1px solid #dfe8e1;
+
+    border-radius: 17px;
+
+    padding: 25px;
+
+    margin-top: 25px;
+
+}
+
+
+.form-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.form-header h2 {
+
+    margin:
+        8px 0;
+
+}
+
+
+.close-button {
+
+    border: 0;
+
+    background: #f0f4f1;
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 8px;
+
+    font-size: 22px;
+
+}
+
+
+.farm-form {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+}
+
+
+.form-note {
+
+    grid-column:
+        1 / -1;
+
+    color: #7c8981;
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content-section {
+
+    margin-top: 45px;
+
+}
+
+
+.section-heading-left h2 {
+
+    margin:
+        8px 0 20px;
+
+    font-size: 29px;
+
+}
+
+
+/* =========================================================
+   FARM GRID
+========================================================= */
+
+.farm-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+
+}
+
+
+.farm-card {
+
+    background: white;
+
+    border:
+        1px solid #e0e9e2;
+
+    border-radius: 17px;
+
+    padding: 22px;
+
+}
+
+
+.farm-card-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.farm-icon {
+
+    font-size: 28px;
+
+}
+
+
+.method-label {
+
+    background: #eaf5ed;
+
+    color: #17623f;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.farm-card h3 {
+
+    margin:
+        15px 0 5px;
+
+    font-size: 20px;
+
+}
+
+
+.location {
+
+    color: #7c8981;
+
+    font-size: 12px;
+
+}
+
+
+.farm-details {
+
+    border-top:
+        1px solid #edf1ed;
+
+    border-bottom:
+        1px solid #edf1ed;
+
+    margin:
+        18px 0;
+
+    padding:
+        15px 0;
+
+    display: grid;
+
+    gap: 13px;
+
+}
+
+
+.farm-details div {
+
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+
+.farm-details small {
+
+    color: #7c8981;
+
+}
+
+
+.farm-details strong {
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   FARM ACTIONS
+========================================================= */
+
+.farm-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    margin-bottom: 10px;
+}
+
+.secondary-button,
+.danger-button {
+    border: 0;
+    padding: 11px 15px;
+    border-radius: 9px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.secondary-button {
+    background: #eaf5ed;
+    color: #17623f;
+}
+
+.secondary-button:hover {
+    background: #dceee2;
+}
+
+.danger-button {
+    background: #fff0ef;
+    color: #a33b35;
+    width: 100%;
+}
+
+.danger-button:hover {
+    background: #ffe0de;
+}
+
+.delete-farm-form {
+    margin: 0;
+}
+
+.auto-monitor-banner {
+    margin-top: 28px;
+    padding: 16px 18px;
+    border: 1px solid #dfe8e1;
+    border-radius: 13px;
+    background: white;
+    color: #536259;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 12px;
+}
+
+.auto-monitor-banner strong {
+    color: #17623f;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   WEATHER RESULT
+========================================================= */
+
+.weather-button {
+
+    width: 100%;
+
+}
+
+
+.weather-result {
+
+    margin-top: 13px;
+
+    padding: 15px;
+
+    border-radius: 11px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+}
+
+
+.weather-result.safe {
+
+    background: #e9f7ed;
+
+    color: #17623f;
+
+}
+
+
+.weather-result.risk {
+
+    background: #fff0e7;
+
+    color: #91471e;
+
+}
+
+
+.weather-values {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 7px;
+
+    margin:
+        10px 0;
+
+}
+
+
+.weather-values div {
+
+    background:
+        rgba(255, 255, 255, .7);
+
+    padding: 8px;
+
+    border-radius: 7px;
+
+}
+
+
+.weather-values strong {
+
+    display: block;
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty-box {
+
+    background: white;
+
+    border:
+        1px dashed #cddbd1;
+
+    border-radius: 17px;
+
+    text-align: center;
+
+    padding: 45px 20px;
+
+}
+
+
+.empty-icon {
+
+    font-size: 38px;
+
+}
+
+
+.empty-box p {
+
+    color: #78867d;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-container {
+
+    overflow-x: auto;
+
+    background: white;
+
+    border:
+        1px solid #e0e9e2;
+
+    border-radius: 14px;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    font-size: 12px;
+
+}
+
+
+th,
+td {
+
+    text-align: left;
+
+    padding: 14px;
+
+    border-bottom:
+        1px solid #edf1ed;
+
+}
+
+
+th {
+
+    color: #748179;
+
+    font-size: 10px;
+
+}
+
+
+.status {
+
+    background: #fff0e7;
+
+    color: #91471e;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+}
+
+
+.history-empty {
+
+    background: white;
+
+    border:
+        1px solid #e0e9e2;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    color: #78867d;
+
+}
+
+
+footer {
+
+    text-align: center;
+
+    color: #8a958e;
+
+    font-size: 11px;
+
+    margin-top: 45px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .auto-monitor-banner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .navbar {
+
+        padding:
+            0 20px;
+
+    }
+
+
+    .tagline {
+
+        display: none;
+
+    }
+
+
+    .container {
+
+        width: 92%;
+
+    }
+
+
+    .hero {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .hero-content {
+
+        padding:
+            40px 25px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 40px;
+
+    }
+
+
+    .hero-image {
+
+        min-height: 200px;
+
+    }
+
+
+    .method-grid,
+    .farm-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .farm-form {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .form-note {
+
+        grid-column:
+            auto;
+
+    }
+
+
+    .dashboard-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .feature-section {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
